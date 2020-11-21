@@ -10,4 +10,19 @@ $('document').ready(function(){
         $('img').last().attr("src", "images/square/"+src);
         $('img').last().attr("alt", alt);        
     });
+    $('img').mouseenter(function(){
+        var arr = [$(this).attr("path"), $(this).attr("city"), $(this).attr("country"), $(this).attr("taken")];
+        $(this).addClass('gray');
+        $('body').append('<div id="preview"><img alt="bigger image"></img><p></div>')
+        $('#preview').children('img').attr("src", "image/medium/"+arr[0]);
+        $('#preview').children('p').append(arr[1]+" "+arr[2]+" "+arr[3]);
+        
+    })
+    $('img').mouseleave(function(){
+        $(this).removeClass('gray');
+        $('#preview').remove();
+    })
+    $('img').mousemove(function(e){
+        $('#preview').css({'left': e.pageX , 'top': e.pageY});
+    });
 });
