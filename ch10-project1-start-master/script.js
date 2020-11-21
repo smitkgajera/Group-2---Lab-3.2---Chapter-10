@@ -30,4 +30,35 @@ $(document).ready(function(){
                 break;
         }
     });
+    $('.sliders').on('input', function(){
+        var temp = $(this).attr("id");
+        var val = this.value;
+
+        switch(temp){
+            case "sliderOpacity":             
+            $("#imgManipulated").children("img").css("-webkit-filter", "opacity("+val+"%)");    
+            break;
+            case "sliderSaturation":
+            $("#imgManipulated").children("img").css("filter", "saturate("+val+"%)");    
+            break;
+            case "sliderBrightness":
+            $("#imgManipulated").children("img").css("filter", "brightness("+val+"%)");    
+            break;
+            case "sliderHue":
+            $("#imgManipulated").children("img").css("-webkit-filter", "hue-rotate("+val+"deg)");    
+            break;
+            case "sliderGray":
+            $("#imgManipulated").children("img").css("filter", "grayscale("+val+"%)");    
+            break;
+            case "sliderBlur":
+            $("#imgManipulated").children("img").css("-webkit-filter", "blur("+val+"px)");    
+            break;
+            default:
+                reset();
+                break;
+        }
+        function reset(){
+            location.reload(true);
+        }
+    });
 });
